@@ -36,6 +36,24 @@
             $("section#section_03 .wrap div.bnt_list ul.menu_list li.menu_btn:nth-child(1)").addClass("on");
             $("#section_03 .wrap div.cont_list ul.cont_box li.cont:nth-child(1)").addClass("on");
 
+            $("#title .wrap .why").hover(
+                function(){
+                    $("#title .wrap .why p.why_sub").addClass("show");
+                },
+                function(){
+                    $("#title .wrap .why p.why_sub").removeClass("show");
+                }
+            );
+            
+            $("#title .wrap .app").hover(
+                function(){
+                    $("#title .wrap .app ul.douwnlist").toggleClass("show");
+                    $("#title .wrap .app h4").toggleClass("unberB");
+                }
+            );
+
+
+
             $("#section_03 .wrap div.bnt_list ul.menu_list li.menu_btn a.menu").click(
                 function(){
                     $(this).parent().addClass("on");
@@ -50,6 +68,20 @@
                     return false;
                 }  
             )
+
+
+            // var nextIndex;
+            // var centerIndex;
+
+            // centerIndex=$("section#section_01 .wrap .parents_02 ul li.slick-center").index();
+            //     console.log("center > "+centerIndex);
+            // nextIndex=$("section#section_01 .wrap .parents_02 ul li.slick-center").index()+1;
+            //     console.log("next > "+nextIndex);
+            console.log("dddddd");
+            $("section#section_01 .wrap .parents_02 ul li.slick-center").addClass("on");
+
+                console.log("--consoleTest");
+
         });
     </script>
 
@@ -88,10 +120,10 @@
         $(document).ready(function(){
             $('.parents_side').slick({
                 centerMode: true,
-                centerPadding: '32px',
-                slidesToShow: 5,
-                slidesToScroll: 5,
-                arrows: false,
+                centerPadding: '50px',
+                slidesToShow:5,
+                slidesToScroll:1,
+                arrows: true,
                 infinite: true,
                 autoplay: true,
                 autoplaySpeed: 1500
@@ -99,10 +131,10 @@
 
             $('.expert_side').slick({
                 centerMode: true,
-                centerPadding: '30px',
+                centerPadding: '50px',
                 slidesToShow: 3,
                 slidesToScroll: 1,
-                arrows: false,
+                arrows: true,
                 infinite: true,
                 autoplay: true,
                 autoplaySpeed: 1500
@@ -362,8 +394,6 @@
                             </div>
                         </li>
                     </ul>
-                    <div class="bnt_next"></div>
-                    <div class="bnt_prev"></div>
                 </div>
             </div>
         </section>
@@ -535,8 +565,6 @@
                             </li>
                             
                         </ul>
-                        <div class="bnt_prev"></div>
-                        <div class="bnt_next"></div>
                     </div>
             </div>
        </section>
