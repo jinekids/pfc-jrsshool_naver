@@ -94,55 +94,6 @@ header div.wrap .sublist{
   display: none;
 }
 
-header div.wrap .lang li:nth-child(3) a {
-  padding: 0;
-  font-size: 0;
-  width: 30px;
-  height: 26px;
-  background-image: url(../img/customcenter.svg);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-header div.wrap .lang li:nth-child(3) a::after {
-  content: "고객센터";
-  font-size: 12px;
-  width: 45px;
-  margin-top: 35px;
-  background-color: #f4f4f4;
-  padding: 5px;
-  border-radius: 10px;
-  color: #999;
-  display: none;
-}
-
-header div.wrap .lang li:nth-child(3) a:hover::after {
-  display: initial;
-  animation-name: fade; /* 애니메이션 이름 */
-  animation-duration: 1s; /* 애니메이션 시간(초) */
-}
-
-@keyframes fade{ /* fade이름의 애니메이션 설정 */
-  0%{ /* 처음 */
-    opacity: 0; /* 투명도 */
-    transform: translateY(30%);
-  }
-  100%{
-    opacity: 1;
-    transform: translateY(0%);
-  }
-}
-
-
-.show{
-  display: grid !important;
-}
-
-
 /* ------------------ title ------------------ */
 #title {
   padding-top: 94px;
@@ -209,6 +160,7 @@ header div.wrap .lang li:nth-child(3) a:hover::after {
 }
 #title .wrap .why{
   margin-top: 28px;
+  width: fit-content;
 }
 #title .wrap .why p.why_text{
   font-size: 22px;
@@ -236,7 +188,6 @@ header div.wrap .lang li:nth-child(3) a:hover::after {
   background-image: url(../img/notice_text_bg.png);
   width: 404px;
   height: 246px;
-  display: block;
   background-repeat: no-repeat;
   background-size: contain;
   padding: 50px 24px 0;
@@ -247,10 +198,15 @@ header div.wrap .lang li:nth-child(3) a:hover::after {
   font-size: 20px;
   color: #353535;
   font-weight: 600;
+  position: absolute;
+  z-index: 2;
   display: none;
 }
 #title .wrap .why p.why_sub strong{
   font-weight: 800;
+}
+.show{
+  display: block !important;
 }
 #title .wrap .app{
   margin-top: 46px;
@@ -273,6 +229,10 @@ header div.wrap .lang li:nth-child(3) a:hover::after {
   cursor: pointer;
   border: none;
 }
+.unberB{
+  border-bottom-right-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+}
 #title .wrap .app ul.douwnlist{
   background-color: #232323;
   border-radius: 0 0 12px 12px;
@@ -281,6 +241,7 @@ header div.wrap .lang li:nth-child(3) a:hover::after {
   box-sizing: border-box;
   display: none;
   position: relative;
+  z-index: 2;
 }
 #title .wrap .app ul.douwnlist::before{
   content: "";
@@ -406,6 +367,7 @@ section#section_01 .wrap .parents_02{
 }
 section#section_01 .wrap .parents_02 ul{
   position: relative;
+  width: 100%;
 }
 section#section_01 .wrap .parents_02 ul::before{
   content: "";
@@ -430,18 +392,19 @@ section#section_01 .wrap .parents_02 ul::after{
   z-index: 1;
 }
 section#section_01 .wrap .parents_02 ul li{
-  margin-right: 30px;
-  width: unset !important;
+  /*! margin-right: 30px; */
+  height: 210px;
 }
 section#section_01 .wrap .parents_02 ul li .text_box{
-  width: 340px;
-  height: 210px;
+  width: calc(100% - 5.8%);
+  height: 100%;
   text-align: center;
   background-color: #e9ebf1;
   border-radius: 20px;
   padding: 30px 36px 26px 30px;
   box-sizing: border-box;
   border: 3px solid transparent;
+  margin: 0 auto;
 }
 section#section_01 .wrap .parents_02 ul li .text_box p.re_text{ 
   font-size: 24px;
@@ -466,9 +429,10 @@ section#section_01 .wrap .parents_02 ul li .text_box p.re_name{
 section#section_01 .wrap .parents_02 ul li.slick-center .text_box{
   box-shadow: 0 24px 6px 0 rgba(35, 35, 35, 0.04);
   border: solid 3px #ffab31;
+	width: calc(100% - 5.8%);
+	/*! height: calc(100% - 10px); */
+  height: 100%;
   background-color: #fff8e3;
-  width: 340px;
-  height: 210px;
 }
 section#section_01 .wrap .parents_02 ul li.slick-center .text_box p.re_text{ 
   color: #ffab31;
@@ -476,7 +440,7 @@ section#section_01 .wrap .parents_02 ul li.slick-center .text_box p.re_text{
 section#section_01 .wrap .parents_02 ul li.slick-center .text_box p.re_name{
   color: rgba(255, 171, 49, 0.5);
 }
-section#section_01 .wrap .parents_02 .bnt_next{
+section#section_01 .wrap .parents_02 .slick-next{
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -492,7 +456,10 @@ section#section_01 .wrap .parents_02 .bnt_next{
   margin-left: 505px;
   z-index: 2;
 }
-section#section_01 .wrap .parents_02 .bnt_prev{
+.slick-next::before{
+  display: none;
+}
+section#section_01 .wrap .parents_02 .slick-prev{
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -505,8 +472,11 @@ section#section_01 .wrap .parents_02 .bnt_prev{
   position: absolute;
   top: 105px;
   left: 50%;
-  margin-left: -579px;
+  margin-left: -575px;
   z-index: 2;
+}
+.slick-prev::before{
+  display: none;
 }
 
 
@@ -758,6 +728,7 @@ section#section_04{
 }
 section#section_04 .wrap{
   padding: 220px 0 60px;
+  height: 100%;
 }
 section#section_04 .wrap h2{
   text-align: center;
@@ -797,6 +768,7 @@ section#section_04 .wrap .expert_list ul::before{
   margin-right: 492px;
   top: 0;
   right: 50%;
+  z-index: 1;
 }
 section#section_04 .wrap .expert_list ul::after{
   content: "";
@@ -807,14 +779,18 @@ section#section_04 .wrap .expert_list ul::after{
   margin-left:  452px;
   top: 0;
   left: 50%;
+  z-index: 1;
 }
 section#section_04 .wrap .expert_list ul li{
   margin-right: 30px;
-  width: 882px !important;
 }
+/* .slick-center{
+  border: 1px solid red;
+  margin-bottom: 30px;
+} */
 section#section_04 .wrap .expert_list ul li .text_box{
-  width: 882px;
-  min-height: 350px;
+  /*! width: 882px; */
+  height: 300px;
   text-align: center;
   background-color: #f2f5fb;
   border-radius: 50px;
@@ -824,7 +800,7 @@ section#section_04 .wrap .expert_list ul li .text_box{
   box-sizing: border-box;
 }
 section#section_04 .wrap .expert_list ul li .text_box p{
-  font-size: 32px;
+  font-size: 21px;
   font-weight: 600;
   line-height: 1.5;
   letter-spacing: -1.28px;
@@ -842,7 +818,7 @@ section#section_04 .wrap .expert_list ul li .info_box p.name{
   display: inline-block;
   width: 360px;
   vertical-align: top;
-  font-size: 32px;
+  font-size: 21px;
   font-weight: 800;
   line-height: 1.5;
   letter-spacing: -1.28px;
@@ -851,7 +827,7 @@ section#section_04 .wrap .expert_list ul li .info_box p.name{
   box-sizing: border-box;
 }
 section#section_04 .wrap .expert_list ul li .info_box p.info{
-  font-size: 32px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.5;
   letter-spacing: -1.28px;
@@ -863,7 +839,7 @@ section#section_04 .wrap .expert_list ul li .info_box p.info{
   box-sizing: border-box;
 }
 
-section#section_04 .wrap .expert_list .bnt_next{
+section#section_04 .wrap .expert_list .slick-next{
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -875,10 +851,11 @@ section#section_04 .wrap .expert_list .bnt_next{
   background-position: 50% 50%;
   position: absolute;
   top: 155px;
-  left: 50%;
+  left: 37%;
   margin-left: 530px;
+  z-index: 2;
 }
-section#section_04 .wrap .expert_list .bnt_prev{
+section#section_04 .wrap .expert_list .slick-prev{
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -890,8 +867,9 @@ section#section_04 .wrap .expert_list .bnt_prev{
   background-position: 50% 50%;
   position: absolute;
   top: 155px;
-  left: 50%;
+  left: 60%;
   margin-left: -554px;
+  z-index: 1;
 }
 
 
