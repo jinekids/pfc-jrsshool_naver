@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="https://campaign-cdn.pstatic.net/0/campaign/2022/01/jrschool/img_v3/pavicon_16.png" sizes="16x16" type="image/x-icon"/>
-    <title>pfc-쥬니버스쿨</title>
+    <title>쥬니버스쿨</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/common.css">
 
@@ -32,56 +32,69 @@
     <!-- 메인 제이쿼리 -->
     <script type="text/javascript">
         $(document).ready(function(){
-            var onIndex;
-            $("section#section_03 .wrap div.bnt_list ul.menu_list li.menu_btn:nth-child(1)").addClass("on");
-            $("#section_03 .wrap div.cont_list ul.cont_box li.cont:nth-child(1)").addClass("on");
 
-            $("#title .wrap .why").hover(
-                function(){
-                    $("#title .wrap .why p.why_sub").addClass("show");
-                },
-                function(){
-                    $("#title .wrap .why p.why_sub").removeClass("show");
-                }
-            );
-            
-            $("#title .wrap .app").hover(
-                function(){
-                    $("#title .wrap .app ul.douwnlist").toggleClass("show");
-                    $("#title .wrap .app h4").toggleClass("unberB");
-                }
-            );
+            // 대메뉴오버시 서브를 슬라이드 다운
+                var wsubN;
+                $("header .wrap ul.gnb li a").hover(
+                    function(){
+                        $("header .wrap .wgnb").stop().slideDown();
+                        //제이쿼리 slideDown()시 css속성에 transition이 있으면 제대로  펼쳐지지 않는다... 
+                        //wsub를 보이게 하시오
+                        wsubN=$(this).parent().index()+1;//마우스올린 대상의 부모의 순번을 가져와서 +1더해서 넣어라
+                        $("header .wrap .wgnb .wsub:nth-child("+wsubN+")").fadeIn();
+                        $("header .wrap .wgnb .wsub:not(:nth-child("+wsubN+"))").fadeOut();
+                    }
+                );   
+                
+                // 서브wgnb영역을 벗어나면 실행하시오(wgnb가 슬라이드업)
+                $("header .wrap .wgnb").mouseleave(function(){
+                    $(this).slideUp();
+                });
 
-
-
-            $("#section_03 .wrap div.bnt_list ul.menu_list li.menu_btn a.menu").click(
-                function(){
-                    $(this).parent().addClass("on");
-                    //click한 요소에 클래스 부여
-                    $(this).parent().siblings().removeClass("on");
-                    // 이외의 다른 형제(요소)들 클래스 지우기
-                    //$("#section_03 .wrap div.cont_list ul.cont_box li.cont").addClass("on");
-                    onIndex=$(this).parent().index()+1;//마우스올린 대상의 부모의 순번을 가져와서 +1더해서 넣어라
-                    //alert(onIndex);
-                    $("#section_03 .wrap div.cont_list ul.cont_box li.cont:nth-child("+onIndex+")").addClass("on");
-                    $("#section_03 .wrap div.cont_list ul.cont_box li.cont:nth-child("+onIndex+")").siblings().removeClass("on");
-                    return false;
-                }  
-            )
+                // h1요소에 마우스진입하면 (wgnb가 슬라이드업)
+                $("header .wrap h1").mouseenter(function(){
+                    $("header .wrap .wgnb").slideUp();
+                });
 
 
-            // var nextIndex;
-            // var centerIndex;
+            // 컨텐츠소개 클릭 시 이미지 변환1
+                var onIndex;
+                $("section#section_03 .wrap div.bnt_list ul.menu_list li.menu_btn:nth-child(1)").addClass("on");
+                $("#section_03 .wrap div.cont_list ul.cont_box li.cont:nth-child(1)").addClass("on");
 
-            // centerIndex=$("section#section_01 .wrap .parents_02 ul li.slick-center").index();
-            //     console.log("center > "+centerIndex);
-            // nextIndex=$("section#section_01 .wrap .parents_02 ul li.slick-center").index()+1;
-            //     console.log("next > "+nextIndex);
-            console.log("dddddd");
-            $("section#section_01 .wrap .parents_02 ul li.slick-center").addClass("on");
+            // 타이틀 마우스 오버 시 설명 확인
+                $("#title .wrap .why").hover(
+                    function(){
+                        $("#title .wrap .why p.why_sub").addClass("show");
+                    },
+                    function(){
+                        $("#title .wrap .why p.why_sub").removeClass("show");
+                    }
+                );
+                
+                $("#title .wrap .app").hover(
+                    function(){
+                        $("#title .wrap .app ul.douwnlist").toggleClass("show");
+                        $("#title .wrap .app h4").toggleClass("unberB");
+                    }
+                );
 
-                console.log("--consoleTest");
 
+            //컨텐츠소개 클릭 시 이미지 변환2
+                $("#section_03 .wrap div.bnt_list ul.menu_list li.menu_btn a.menu").click(
+                    function(){
+                        $(this).parent().addClass("on");
+                        //click한 요소에 클래스 부여
+                        $(this).parent().siblings().removeClass("on");
+                        // 이외의 다른 형제(요소)들 클래스 지우기
+                        //$("#section_03 .wrap div.cont_list ul.cont_box li.cont").addClass("on");
+                        onIndex=$(this).parent().index()+1;//마우스올린 대상의 부모의 순번을 가져와서 +1더해서 넣어라
+                        //alert(onIndex);
+                        $("#section_03 .wrap div.cont_list ul.cont_box li.cont:nth-child("+onIndex+")").addClass("on");
+                        $("#section_03 .wrap div.cont_list ul.cont_box li.cont:nth-child("+onIndex+")").siblings().removeClass("on");
+                        return false;
+                    }  
+                )
         });
     </script>
 
@@ -162,25 +175,35 @@
             <ul class="gnb flex">
                 <li><a class="yellow h4" href="">쥬니버스쿨 소개</a></li>
                 <li><a class="h4" href="">커리큘럼</a></li>
+                <li><a class="h4" href="">콘텐츠 체험</a></li>
                 <li><a class="h4" href="">워크북</a></li>
                 <li><a class="h4" href="">고객센터</a></li>
             </ul>
 
-            <div class="sublist">
-                <h2 class="hide">커리큘럼</h2>
-                <ul class="useguide">
-                    <li><a href="">수학</a></li>
-                    <li><a href="">코딩</a></li>
-                    <li><a href="">논리</a></li>
-                    <li><a href="">실험실</a></li>
-                    <li><a href="">사회성</a></li>
-                </ul>
+            <div class="wgnb hide">
+                <div class="wsub main"></div>
+                <div class="wsub curriculum">
+                    <h2 class="hide">커리큘럼</h2>
+                    <ul class="useguide">
+                        <li><a class="math" href="">수학</a></li>
+                        <li><a class="cording" href="">놀이코딩</a></li>
+                        <li><a class="logic" href="">논리</a></li>
+                        <li><a class="lab" href="">실험실</a></li>
+                        <li><a class="sociality" href="">사회성</a></li>
+                    </ul>
+                </div>
+                <div class="wsub experience"></div>
+                <div class="wsub workbook">
+                    <h3 class="hide">워크북</h3>
+                    <ul class="useguide">
+                        <li><a href="">1단계</a></li>
+                        <li><a href="">2단계</a></li>
+                    </ul>
+                </div>
+                <div class="wsub cs"></div>
 
-                <h3 class="hide">워크북</h3>
-                <ul class="useguide">
-                    <li><a href="">1단계</a></li>
-                    <li><a href="">2단계</a></li>
-                </ul>
+
+
             </div>
 
         </div>

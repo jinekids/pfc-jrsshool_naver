@@ -1,5 +1,6 @@
-boby{
+body {
   position: relative;
+  overflow-x: hidden;
 }
 
 /* ------------------ header ------------------ */
@@ -41,17 +42,17 @@ header.fixed{
   top: 0;
 }
 header div.wrap {
-  width: 1080px;
-  /*! align-items: center; */
   max-width: 1062px;
+  position: relative;
 }
 header div.wrap h1 {
   margin-top: 17px;
   height: 54px;
+  width: 252px;
 }
 header div.wrap h1 a {
   font-size: 0;
-  width: 174px;
+  width: 252px;
   height: 54px;
   display: block;
   background-image: url(../img/logo_pc.png);
@@ -61,20 +62,34 @@ header div.wrap h1 a {
 
 header div.wrap .gnb {  
   height: 100%;
-  margin-left: 185px;
+  margin-left: 50px;
 }
 header div.wrap .gnb li:first-child{  
   margin-left: 0px;
 }
 header div.wrap .gnb li{  
-  margin-left: 18px;
-  position: relative;
+}
+header div.wrap .gnb li:nth-child(2){
+   margin-left: 50px;
+  position: relative; 
+}
+header div.wrap .gnb li:nth-child(3){
+   margin-left: 26px;
+  position: relative; 
+}
+header div.wrap .gnb li:nth-child(4){
+   margin-left: 24px;
+  position: relative; 
+}
+header div.wrap .gnb li:nth-child(5){
+   margin-left: 20px;
+  position: relative; 
 }
 header div.wrap .gnb li a {
   display: block;
   line-height: 88px;
   font-weight: 800;
-  width: 162px;
+  width: 128px;
   height: 88px;
   letter-spacing: -0.6px;
   text-align: center;
@@ -90,9 +105,104 @@ header div.wrap .gnb li a:hover {
 }
 
 
-header div.wrap .sublist{
-  display: none;
+header div.wrap .wgnb{
+  display: flex;
+  position: absolute;
+  top: 88px;
+  background-color: white;
+  width: 100%;
+  left: 50%;
+  align-items: center;
+  height: 92px !important;
+  transform: translate(-50%);
 }
+header div.wrap .wgnb h2{
+}
+header div.wrap .wgnb .wsub {
+}
+header div.wrap .wgnb .wsub ul.useguide{
+  display: flex;
+  /*! position: absolute; */
+}
+header div.wrap .wgnb .wsub.curriculum ul.useguide li{
+}
+header div.wrap .wgnb .wsub.curriculum ul.useguide li + li {
+  margin-left: 76px;
+}
+header div.wrap .wgnb .wsub ul.useguide li:hover{
+  border-radius: 27px;
+  background-color: #f2f6fc !important;
+}
+header div.wrap .wgnb .wsub ul.useguide li a{
+  font-size: 20px;
+  font-weight: 800;
+  color: #555;
+  height: 54px;
+  padding: 0 28px 0 73px;
+  line-height: 54px;
+  letter-spacing: -0.2px;
+  text-align: center;
+}
+header div.wrap .wgnb .wsub.curriculum ul.useguide li a{
+
+}
+header div.wrap .wgnb .wsub.curriculum ul.useguide li a.math{
+  background-image: url(../img/nav_link_sub_01.png);
+  background-repeat: no-repeat;
+  background-size: 35px 28px;
+  background-position-x: 28px;
+  background-position-y: 50%;
+}
+header div.wrap .wgnb .wsub.curriculum ul.useguide li a.cording{
+  background-image: url(../img/nav_link_sub_02.png);
+  background-repeat: no-repeat;
+  background-size: 35px 28px;
+  background-position-x: 28px;
+  background-position-y: 50%;
+}
+header div.wrap .wgnb .wsub.curriculum ul.useguide li a.logic{
+  background-image: url(../img/nav_link_sub_03.png);
+  background-repeat: no-repeat;
+  background-size: 35px 28px;
+  background-position-x: 28px;
+  background-position-y: 50%;
+}
+header div.wrap .wgnb .wsub.curriculum ul.useguide li a.lab{
+  background-image: url(../img/nav_link_sub_04.png);
+  background-repeat: no-repeat;
+  background-size: 35px 28px;
+  background-position-x: 28px;
+  background-position-y: 50%;
+}
+header div.wrap .wgnb .wsub.curriculum ul.useguide li a.sociality{
+  background-image: url(../img/nav_link_sub_05.png);
+  background-repeat: no-repeat;
+  background-size: 35px 28px;
+  background-position-x: 28px;
+  background-position-y: 50%;
+}
+header div.wrap .wgnb .wsub.workbook{
+  position: absolute;
+  right: 0;
+}
+header div.wrap .wgnb .wsub.workbook ul.useguide li{
+}
+header div.wrap .wgnb .wsub.workbook ul.useguide li a{
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+header div.wrap .wgnb .wsub.workbook ul.useguide li + li {
+  margin-left: 76px;
+}
+header div.wrap .wgnb .wsub.workbook ul.useguide li:nth-child(1):hover{
+  background-color: #ffe990 !important;
+}
+header div.wrap .wgnb .wsub.workbook ul.useguide li:nth-child(2):hover{
+  background-color: #e3eefd !important;
+}
+
+
+
 
 /* ------------------ title ------------------ */
 #title {
