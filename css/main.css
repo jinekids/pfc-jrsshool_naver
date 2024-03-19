@@ -11,33 +11,12 @@ header {
   position: fixed;
   width: 100%;
   top: -100px;
-  /*
-  animation-name: headerD;
-  animation-duration: 1s;
-  animation-timing-function: ease-in;
-  animation-delay: 0.5s;
-  opacity: 0;
-  animation-fill-mode: forwards;
-  */
-  /* >> 애니메이션 마지막 상태 값을 그대로 유지  */
   background-color: white;
   z-index: 10;
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.16);
   /*! display: none; */
   transition: all 0.2s;
 }
-/*
-@keyframes headerD{
-0%{
-opacity: 0;
-transform: translateY(-100%);
-}
-100%{
-opacity: 1;
-transform: translateY(0);
-}
-}
-*/
 header.fixed{
   top: 0;
 }
@@ -96,13 +75,6 @@ header div.wrap .gnb li a {
   box-sizing: border-box;
 }
 
-header div.wrap .gnb li:first-child a {
-  border-bottom: 5px solid #ffcd03;
-}
-header div.wrap .gnb li a:hover {
-  color: #ffcd03;
-  border-bottom: 5px solid;
-}
 
 
 header div.wrap .wgnb{
@@ -110,15 +82,18 @@ header div.wrap .wgnb{
   position: absolute;
   top: 88px;
   background-color: white;
-  width: 100%;
+  width: 200%;
   left: 50%;
   align-items: center;
   height: 92px !important;
   transform: translate(-50%);
+  box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.16);
 }
 header div.wrap .wgnb h2{
 }
 header div.wrap .wgnb .wsub {
+  display:none;
+  
 }
 header div.wrap .wgnb .wsub ul.useguide{
   display: flex;
@@ -142,6 +117,10 @@ header div.wrap .wgnb .wsub ul.useguide li a{
   line-height: 54px;
   letter-spacing: -0.2px;
   text-align: center;
+}
+header div.wrap .wgnb .wsub.curriculum{
+  position: absolute;
+  right: 25%;
 }
 header div.wrap .wgnb .wsub.curriculum ul.useguide li a{
 
@@ -181,9 +160,10 @@ header div.wrap .wgnb .wsub.curriculum ul.useguide li a.sociality{
   background-position-x: 28px;
   background-position-y: 50%;
 }
+
 header div.wrap .wgnb .wsub.workbook{
   position: absolute;
-  right: 0;
+  right: 25%;
 }
 header div.wrap .wgnb .wsub.workbook ul.useguide li{
 }
@@ -192,7 +172,7 @@ header div.wrap .wgnb .wsub.workbook ul.useguide li a{
   box-sizing: border-box;
 }
 header div.wrap .wgnb .wsub.workbook ul.useguide li + li {
-  margin-left: 76px;
+  margin-left: 20px;
 }
 header div.wrap .wgnb .wsub.workbook ul.useguide li:nth-child(1):hover{
   background-color: #ffe990 !important;
@@ -322,7 +302,7 @@ header div.wrap .wgnb .wsub.workbook ul.useguide li:nth-child(2):hover{
   margin-top: 46px;
   width: 169px;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 #title .wrap .app h4{
   background-color: #232323;
@@ -351,7 +331,7 @@ header div.wrap .wgnb .wsub.workbook ul.useguide li:nth-child(2):hover{
   box-sizing: border-box;
   display: none;
   position: relative;
-  z-index: 2;
+  z-index: 5;
 }
 #title .wrap .app ul.douwnlist::before{
   content: "";
@@ -364,6 +344,7 @@ header div.wrap .wgnb .wsub.workbook ul.useguide li:nth-child(2):hover{
   position: absolute;
   left: -95px;
   bottom: 0;
+  z-index: 2;
 }
 #title .wrap .app ul .google{
 

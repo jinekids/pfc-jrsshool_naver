@@ -35,26 +35,50 @@
 
             // 대메뉴오버시 서브를 슬라이드 다운
                 var wsubN;
-                $("header .wrap ul.gnb li a").hover(
+                $("header .wrap .wgnb").hide();
+                $("header .wrap ul.gnb li a").mouseenter(
                     function(){
-                        $("header .wrap .wgnb").stop().slideDown();
+                        wsubN=$(this).parent().index()+1;//마우스올린 대상의 부모의 순번을 가져와서 +1더해서 넣어라
+                        if( $("header .wrap .wgnb .wsub:nth-child("+wsubN+")").has("ul").length>0){
+                            $("header .wrap .wgnb .wsub:nth-child("+wsubN+")").parent().stop().slideDown();
+                            //console.log(wsubN);
+                        }else{
+                            $("header .wrap .wgnb").stop().hide();
+                        }
+                       
                         //제이쿼리 slideDown()시 css속성에 transition이 있으면 제대로  펼쳐지지 않는다... 
                         //wsub를 보이게 하시오
-                        wsubN=$(this).parent().index()+1;//마우스올린 대상의 부모의 순번을 가져와서 +1더해서 넣어라
+                       
+                       
                         $("header .wrap .wgnb .wsub:nth-child("+wsubN+")").fadeIn();
                         $("header .wrap .wgnb .wsub:not(:nth-child("+wsubN+"))").fadeOut();
                     }
                 );   
                 
                 // 서브wgnb영역을 벗어나면 실행하시오(wgnb가 슬라이드업)
-                $("header .wrap .wgnb").mouseleave(function(){
-                    $(this).slideUp();
+                $("header .wrap .wgnb,header").mouseleave(function(){
+                    $(".wgnb").slideUp();
                 });
 
                 // h1요소에 마우스진입하면 (wgnb가 슬라이드업)
                 $("header .wrap h1").mouseenter(function(){
                     $("header .wrap .wgnb").slideUp();
                 });
+
+                //헤더 마우스 오버 시 노란 밑줄
+                $("header div.wrap .gnb li:nth-child(1) a").addClass("yellow");
+                $("header div.wrap .gnb li a").hover(
+                    function(){
+                        $("header div.wrap .gnb li:nth-child(1) a").removeClass("yellow");
+                        $(this).addClass("yellow");
+                    },
+                    function(){
+                        $(this).removeClass("yellow");
+                        $("header div.wrap .gnb li:nth-child(1) a").addClass("yellow");
+                    }
+                )
+
+
 
 
             // 컨텐츠소개 클릭 시 이미지 변환1
@@ -173,7 +197,7 @@
                 <a href="">쥬니버스쿨</a>
             </h1>
             <ul class="gnb flex">
-                <li><a class="yellow h4" href="">쥬니버스쿨 소개</a></li>
+                <li><a class="h4" href="">쥬니버스쿨 소개</a></li>
                 <li><a class="h4" href="">커리큘럼</a></li>
                 <li><a class="h4" href="">콘텐츠 체험</a></li>
                 <li><a class="h4" href="">워크북</a></li>

@@ -71,6 +71,7 @@ body{
 
 .yellow{
     color: #ffcd03;
+    border-bottom: 5px solid #ffcd03;
 }
 .blue{
     color: #00bdfb;
